@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet author="admin" id="4">
+        <createTable tableName="company">
+            <column autoIncrement="true" name="com_id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="CEO" type="varchar(30)"/>
+        </createTable>
+        <rollback>
+            <dropTable tableName="person"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet author="khoi" id="2">
+        <insert tableName="company">
+            <column name="name" value="TechLead"/>
+            <column name="address" value="VietNam"/>
+            <column name="CEO" value="AAAA"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="thanh" id="3">
+        <insert tableName="company">
+            <column name="name" value="SamSung"/>
+            <column name="address" value="korea"/>
+            <column name="CEO" value="BBBB"/>
+        </insert>
+
+        <insert tableName="company">
+            <column name="name" value="Apple"/>
+            <column name="address" value="America"/>
+            <column name="CEO" value="CCCC"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="4" author="nam">
+        <addColumn tableName="company">
+            <column name="job" type="varchar(30)"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="5" author="hoa">
+        <createTable tableName="Test">
+            <column name="id" type="int"/>
+            <column name="name" type="nvarchar(30)"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
